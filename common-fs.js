@@ -100,14 +100,20 @@ function fs_stat(path)
   const promise = new Promise((resolve, reject) =>
   {
     let errmsg = '';
-    let text = '';
+    let size = 0;
+    let text = '', isDir = false, isFile = false, createDate = '';
     fs.stat(path, (err, stats) =>
     {
       if (err)
         errmsg = err.message;
       else
-        text = data;
-      resolve({ stats, errmsg });
+      {
+        size = stats.size;
+        isDir = stats.isDirectory();
+        createDate = stats.birthtime.toISOString().substr(0, 10);
+        isFile = stats.isFile();
+      }
+      resolve({ size, isDir, isFile, createDate, errmsg });
     });
   });
   return promise;
