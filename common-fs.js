@@ -94,6 +94,25 @@ function fs_readTextFile_ifExists( filePath )
   return promise;
 }
 
+// ------------------------------- fs_stat --------------------------------
+function fs_stat(path)
+{
+  const promise = new Promise((resolve, reject) =>
+  {
+    let errmsg = '';
+    let text = '';
+    fs.stat(path, (err, stats) =>
+    {
+      if (err)
+        errmsg = err.message;
+      else
+        text = data;
+      resolve({ stats, errmsg });
+    });
+  });
+  return promise;
+}
+
 // ---------------------- fs_writeTextFile --------------------------------
 // textLines: array of text lines to write to text file.
 function fs_writeTextFile(filePath, textLines )
@@ -114,6 +133,6 @@ function fs_writeTextFile(filePath, textLines )
 }
 
 module.exports = { fs_ensureDirExists, fs_readTextFile, fs_readTextFilx,
-        fs_readTextFile_ifExists, fs_writeTextFile,
+        fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,
   string_clip, string_ensureQuoted, string_replaceAll, string_replaceAt
     } ;
