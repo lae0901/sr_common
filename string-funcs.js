@@ -38,4 +38,55 @@ function string_head(text, lx)
 }
 
 
-module.exports = {string_clip, string_ensureQuoted} ;
+// -------------------- string_replaceAll -----------------------
+// replace all occurance of findText with replaceText
+function string_replaceAll(str, findText, replaceText)
+{
+  let res = '';
+  let ix = 0;
+  while (ix < str.length)
+  {
+    const fx = str.indexOf(findText, ix);
+
+    // length from start to found position
+    let lx = 0;
+    if (fx == -1)
+      lx = str.length - ix;
+    else
+      lx = fx - ix;
+
+    // copy not match text to result.
+    if (lx > 0)
+      res += str.substr(ix, lx);
+
+    // match found. add replacement text to result.
+    if (fx != -1)
+      res += replaceText;
+
+    // advance in str.
+    if (fx == -1)
+      ix = str.length;
+    else
+      ix = fx + findText.length;
+  }
+  return res;
+}
+
+// --------------------- string_replaceAt -----------------
+// replace substr in string at the specified location.
+function string_replaceAt(text, bx, lx, rplText)
+{
+  var beforeText = '';
+  var afterText = '';
+  if (bx > 0)
+    beforeText = text.substr(0, bx);
+  var nx = bx + lx;
+  if (nx < text.length)
+    afterText = text.substr(nx);
+
+  return beforeText + rplText + afterText;
+}
+
+
+
+module.exports = {string_clip, string_ensureQuoted, string_replaceAll, string_replaceAt} ;
