@@ -48,10 +48,14 @@ function fs_ensureDirExists(dirPath, mask)
 // ------------------------------ fs_exists ------------------------------
 async function fs_exists( filePath )
 {
-  fs.exists(filePath, (exists) =>
+  const promise = new Promise((resolve, reject) =>
   {
-    return exists ;
+    fs.exists(filePath, (exists) =>
+    {
+      resolve(exists);
+    });
   });
+  return promise;
 }
 
 // ---------------------- fs_readTextFilx --------------------------------
