@@ -87,6 +87,4 @@ function string_replaceAt(text, bx, lx, rplText)
   return beforeText + rplText + afterText;
 }
 
-
-
-module.exports = {string_clip, string_ensureQuoted, string_replaceAll, string_replaceAt} ;
+module.exports = {string_clip, string_ensureQuoted, string_head, string_replaceAll, string_replaceAt} ;
