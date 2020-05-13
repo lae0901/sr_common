@@ -2,7 +2,8 @@
 
 const path = require('path') ;
 const fs = require('fs');
-const {string_clip, string_ensureQuoted, string_replaceAll, string_replaceAt} = require('./string-funcs');
+const {string_clip, string_ensureQuoted, string_head, string_replaceAll, 
+        string_replaceAt} = require('./string-funcs');
 
 // ---------------------------- fs_ensureDirExists --------------------------
 // options: { deep: true, mask: 0777 }
@@ -167,5 +168,6 @@ function fs_writeTextFile(filePath, textLines )
 module.exports = { fs_ensureDirExists, fs_exists, fs_readDir, 
         fs_readTextFile, fs_readTextFilx,
         fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,
-        string_clip, string_ensureQuoted, string_replaceAll, string_replaceAt
+        string_clip, string_ensureQuoted, string_head, string_replaceAll, 
+        string_replaceAt
     } ;
