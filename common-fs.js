@@ -46,7 +46,7 @@ function fs_ensureDirExists(dirPath, mask)
 }
 
 // ------------------------------ fs_exists ------------------------------
-async function fs_exists( filePath )
+function fs_exists( filePath )
 {
   const promise = new Promise((resolve, reject) =>
   {
@@ -55,6 +55,19 @@ async function fs_exists( filePath )
       resolve(exists);
     });
   });
+  return promise;
+}
+
+// ---------------------- fs_readDir --------------------------------
+function fs_readDir( dirPath)
+{
+  const promise = new Promise((resolve, reject) =>
+  {
+    fs.readdir(dirPath, (err, files) =>
+    {
+      resolve({err,files});
+    });    
+  }) ;
   return promise;
 }
 
@@ -151,7 +164,8 @@ function fs_writeTextFile(filePath, textLines )
   return promise;
 }
 
-module.exports = { fs_ensureDirExists, fs_exists, fs_readTextFile, fs_readTextFilx,
+module.exports = { fs_ensureDirExists, fs_exists, fs_readDir, 
+        fs_readTextFile, fs_readTextFilx,
         fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,
         string_clip, string_ensureQuoted, string_replaceAll, string_replaceAt
     } ;
