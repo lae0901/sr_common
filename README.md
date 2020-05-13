@@ -3,6 +3,7 @@
 
 ## file methods
 * exists = await fs_exists(filePath) 
+* const {err,files } = await fs_readDir( dirPath )
 
 ## publish instructions
 * increment version number in package.json
