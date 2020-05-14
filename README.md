@@ -1,5 +1,8 @@
 # sr_common - common node functions
 
+## date methods
+* date_currentISO( )
+* date_toISO() 
 
 ## file methods
 * exists = await fs_exists(filePath) 
@@ -7,7 +10,7 @@
 
 ## publish instructions
 * increment version number in package.json
-* npm run build
+* make sure new functions are exported from common-fs.js
 * git add, commit, push to repo
 * npm publish
 * npm update in projects which use this package

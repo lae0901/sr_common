@@ -12,6 +12,24 @@ function array_getSingleItem(arr)
     return null;
 }
 
+// ---------------------------- date_currentISO -------------------------------
+function date_currentISO()
+{
+  let dt = new Date();
+  return date_toISO(dt);
+}
+
+// --------------------- date_toISO -----------------------------
+// convert date to ISO format. yyyy-mm=dd
+function date_toISO(d)
+{
+  function pad(n) { return n < 10 ? '0' + n : n }
+
+  return d.getUTCFullYear() + '-'
+    + pad(d.getUTCMonth() + 1) + '-'
+    + pad(d.getUTCDate());
+}
+
 // --------------------------------- sql_argumentMarkerBuilder -----------------------
 // arguments: {arg1, arg2, ... }
 // returns { argData, argMarker }
@@ -66,4 +84,5 @@ function sql_whereClauseBuilder( whereKeys, alias )
   return { whereData, whereClause } ;
 }
 
-module.exports = { array_getSingleItem, sql_argumentMarkerBuilder, sql_whereClauseBuilder };
+module.exports = { array_getSingleItem, date_currentISO, date_toISO, 
+        sql_argumentMarkerBuilder, sql_whereClauseBuilder };

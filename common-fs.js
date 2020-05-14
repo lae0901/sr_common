@@ -4,6 +4,7 @@ const path = require('path') ;
 const fs = require('fs');
 const {string_clip, string_ensureQuoted, string_head, string_replaceAll, 
         string_replaceAt} = require('./string-funcs');
+const { date_toISO, date_currentISO } = require('./core-funcs');
 
 // ---------------------------- fs_ensureDirExists --------------------------
 // options: { deep: true, mask: 0777 }
@@ -165,7 +166,8 @@ function fs_writeTextFile(filePath, textLines )
   return promise;
 }
 
-module.exports = { fs_ensureDirExists, fs_exists, fs_readDir, 
+module.exports = { date_currentISO, date_toISO,
+        fs_ensureDirExists, fs_exists, fs_readDir, 
         fs_readTextFile, fs_readTextFilx,
         fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,
         string_clip, string_ensureQuoted, string_head, string_replaceAll, 
