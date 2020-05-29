@@ -8,6 +8,9 @@
 * exists = await fs_exists(filePath) 
 * const {err,files } = await fs_readDir( dirPath )
 
+## string methods
+* string_substrLenient( str, bx, lx )
+
 ## publish instructions
 * increment version number in package.json
 * make sure new functions are exported from common-fs.js

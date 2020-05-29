@@ -87,4 +87,41 @@ function string_replaceAt(text, bx, lx, rplText)
   return beforeText + rplText + afterText;
 }
 
-module.exports = {string_clip, string_ensureQuoted, string_head, string_replaceAll, string_replaceAt} ;
+// ---------------------------- string_substrLenient --------------------
+// return substring of the input string. only, clip the results if start or end
+// pos are out of bounds of the string.
+function string_substrLenient(str, fx, lx = -1)
+{
+  if ((typeof str) != 'string')
+    return '';
+
+  // move from from negative to zero. Reduce length by the adjusted amount.
+  if (fx < 0)
+  {
+    var adj = 0 - fx;
+    fx += adj;
+    if (lx != -1)
+    {
+      lx -= adj;
+      if (lx < 0)
+        lx = 0;
+    }
+  }
+
+  if (fx >= str.length)
+    return '';
+  if (lx == -1)
+    return str.substr(fx);
+
+  // remaining length.
+  var remLx = str.length - fx;
+
+  // trim length if remaining lgth exceeded.
+  if (lx > remLx)
+    lx = remLx;
+
+  return str.substr(fx, lx);
+}
+
+module.exports = {string_clip, string_ensureQuoted, string_head, 
+  string_replaceAll, string_replaceAt, string_substrLenient } ;
