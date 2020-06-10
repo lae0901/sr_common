@@ -1,5 +1,8 @@
 # sr_common - common node functions
 
+## import
+* const { fs_readTextFile } = require('sr_common');
+
 ## date methods
 * date_currentISO( )
 * date_toISO() 
@@ -7,6 +10,7 @@
 ## file methods
 * exists = await fs_exists(filePath) 
 * const {err,files } = await fs_readDir( dirPath )
+* const {text} = await fs_readTextFile('.' + req.path);
 
 ## string methods
 * string_substrLenient( str, bx, lx )
