@@ -11,6 +11,7 @@
 * exists = await fs_exists(filePath) 
 * const {err,files } = await fs_readDir( dirPath )
 * const {text} = await fs_readTextFile('.' + req.path);
+* const {base64} = await fs_readBase64( filePath );
 
 ## string methods
 * string_substrLenient( str, bx, lx )

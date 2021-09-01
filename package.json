@@ -1,6 +1,6 @@
 {
   "name": "sr_common",
-  "version": "1.7.7",
+  "version": "1.7.8",
   "description": "steve richter common code",
   "main": "common-fs.js",
   "scripts": {
@@ -11,5 +11,8 @@
     "url": "git+https://github.com/lae0901/sr_common.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "btoa": "^1.2.1"
+  }
 }

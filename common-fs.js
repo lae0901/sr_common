@@ -2,6 +2,7 @@
 
 const path = require('path') ;
 const fs = require('fs');
+const btoa = require('btoa') ;
 const {string_clip, string_ensureQuoted, string_head, string_replaceAll, 
         string_replaceAt, string_substrLenient } = require('./string-funcs');
 const { date_toISO, date_currentISO } = require('./core-funcs');
@@ -55,6 +56,25 @@ function fs_exists( filePath )
     fs.exists(filePath, (exists) =>
     {
       resolve(exists);
+    });
+  });
+  return promise;
+}
+
+// ---------------------- fs_readBase64 --------------------------------
+function fs_readBase64(filePath)
+{
+  const promise = new Promise((resolve, reject) =>
+  {
+    let errmsg = '';
+    let base64 = '';
+    fs.readFile(filePath, (err, data) =>
+    {
+      if (err)
+        errmsg = err.message;
+      else
+        base64 = btoa(data);
+      resolve({ base64, errmsg });
     });
   });
   return promise;
@@ -167,7 +187,7 @@ function fs_writeTextFile(filePath, textLines )
 }
 
 module.exports = { date_currentISO, date_toISO,
-        fs_ensureDirExists, fs_exists, fs_readDir, 
+        fs_ensureDirExists, fs_exists, fs_readBase64, fs_readDir, 
         fs_readTextFile, fs_readTextFilx,
         fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,
         string_clip, string_ensureQuoted, string_head, string_replaceAll, 
