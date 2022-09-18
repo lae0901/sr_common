@@ -37,6 +37,13 @@ function string_head(text, lx)
     return text.substr(0, lx);
 }
 
+// --------------------------------- str_headSplit ---------------------------------
+function str_headSplit( str, lx )
+{
+  const part1 = string_head(str,lx) ;
+  const part2 = str.length <= lx ? '' : str.substr(lx) ;
+  return {part1, part2} ;
+}
 
 // -------------------- string_replaceAll -----------------------
 // replace all occurance of findText with replaceText
@@ -123,5 +130,5 @@ function string_substrLenient(str, fx, lx = -1)
   return str.substr(fx, lx);
 }
 
-module.exports = {string_clip, string_ensureQuoted, string_head, 
+module.exports = {string_clip, string_ensureQuoted, string_head, str_headSplit,
   string_replaceAll, string_replaceAt, string_substrLenient } ;
