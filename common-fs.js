@@ -3,7 +3,8 @@
 const path = require('path') ;
 const fs = require('fs');
 const btoa = require('btoa') ;
-const {string_clip, string_ensureQuoted, string_head, string_replaceAll, 
+const {string_clip, string_ensureQuoted, string_head, str_headSplit, 
+        string_replaceAll, 
         string_replaceAt, string_substrLenient } = require('./string-funcs');
 const { date_toISO, date_currentISO } = require('./core-funcs');
 
@@ -190,6 +191,7 @@ module.exports = { date_currentISO, date_toISO,
         fs_ensureDirExists, fs_exists, fs_readBase64, fs_readDir, 
         fs_readTextFile, fs_readTextFilx,
         fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,
-        string_clip, string_ensureQuoted, string_head, string_replaceAll, 
+        string_clip, string_ensureQuoted, string_head, str_headSplit,
+        string_replaceAll, 
         string_replaceAt, string_substrLenient
     } ;

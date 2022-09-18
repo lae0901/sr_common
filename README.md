@@ -14,6 +14,8 @@
 * const {base64} = await fs_readBase64( filePath );
 
 ## string methods
+* string_head( str, lx )
+* {part1, part2} = str_headSplit( str, lx )
 * string_substrLenient( str, bx, lx )
 
 ## publish instructions

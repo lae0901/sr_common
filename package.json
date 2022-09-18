@@ -1,6 +1,6 @@
 {
   "name": "sr_common",
-  "version": "1.7.9",
+  "version": "1.7.10",
   "description": "steve richter common code",
   "main": "common-fs.js",
   "scripts": {
