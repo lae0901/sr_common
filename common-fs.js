@@ -144,6 +144,11 @@ function fs_readTextFile_ifExists( filePath )
 }
 
 // ------------------------------- fs_stat --------------------------------
+/**
+ * 
+ * @param {string} path path of the director item 
+ * @returns { size, isDir, isFile, createDate, errmsg }
+ */
 function fs_stat(path)
 {
   const promise = new Promise((resolve, reject) =>
