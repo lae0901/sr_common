@@ -8,6 +8,51 @@ const {string_clip, string_ensureQuoted, string_head, str_headSplit,
         string_replaceAt, string_substrLenient } = require('./string-funcs');
 const { date_toISO, date_currentISO } = require('./core-funcs');
 
+// ------------------------------- dir_itemList --------------------------------
+// return array containing list of items in a folder. Where each item is an
+// object { itemName, isDir, isFile, size, modDate, createDate }
+/**
+ * 
+ * @param {string} dirPath directory path 
+ * @returns [{itemName, isDir, isFile, size, createDate}]
+ */
+function dir_itemList( dirPath )
+{
+  const promise = new Promise((resolve, reject) =>
+  {
+   const items = [] ;
+   let errmsg ;
+
+   fs.readdir( dirPath, async (err, files) =>
+   {
+     if ( err )
+     {
+       errmsg = err.error ;
+     }
+     else if (files)
+     {
+       for( const file of files )
+       {
+         const fullPath = path.join( dirPath, file) ;
+         const {isDir, isFile, size, createDate } = await fs_stat(fullPath ) ;
+         const item = { itemName:file, fullPath, isDir, isFile, size, createDate };
+         items.push(item) ;
+       };
+     }
+     resolve({errmsg, items});
+   });
+ }) ;
+ return promise ;
+
+   // https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
+
+
+   // for await (const results of array) {
+   //   await longRunningTask()
+   // }
+   // console.log('I will wait')
+}
+
 // ---------------------------- fs_ensureDirExists --------------------------
 // options: { deep: true, mask: 0777 }
 // deep: ensure deep directory exists. create dir of dir.
@@ -193,6 +238,7 @@ function fs_writeTextFile(filePath, textLines )
 }
 
 module.exports = { date_currentISO, date_toISO,
+        dir_itemList,
         fs_ensureDirExists, fs_exists, fs_readBase64, fs_readDir, 
         fs_readTextFile, fs_readTextFilx,
         fs_readTextFile_ifExists, fs_stat, fs_writeTextFile,

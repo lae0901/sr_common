@@ -12,6 +12,7 @@
 * const {err,files } = await fs_readDir( dirPath )
 * const {text} = await fs_readTextFile('.' + req.path);
 * const {base64} = await fs_readBase64( filePath );
+* const { items, errmsg } = await dir_itemList( gitPath ) ;
 
 ## string methods
 * string_head( str, lx )
