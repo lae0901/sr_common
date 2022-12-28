@@ -37,10 +37,24 @@ function string_head(text, lx)
     return text.substr(0, lx);
 }
 
+// -------------------------- str_head ----------------------
+// return the front of the string
+function str_head(text, lx)
+{
+  if (!text)
+    return '';
+  if (lx > text.length)
+    lx = text.length;
+  if (lx <= 0)
+    return '';
+  else
+    return text.substr(0, lx);
+}
+
 // --------------------------------- str_headSplit ---------------------------------
 function str_headSplit( str, lx )
 {
-  const part1 = string_head(str,lx) ;
+  const part1 = str_head(str,lx) ;
   const part2 = str.length <= lx ? '' : str.substr(lx) ;
   return {part1, part2} ;
 }
