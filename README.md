@@ -17,7 +17,7 @@
 ## string methods
 * string_head( str, lx )
 * {part1, part2} = str_headSplit( str, lx )
-* string_substrLenient( str, bx, lx )
+* str_substrLenient( str, bx, lx )
 
 ## publish instructions
 * increment version number in package.json
