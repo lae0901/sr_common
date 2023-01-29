@@ -6,7 +6,7 @@ const btoa = require('btoa') ;
 const {string_clip, string_ensureQuoted, string_head, str_headSplit, 
         string_replaceAll, 
         string_replaceAt, string_substrLenient, str_substrLenient } = require('./string-funcs');
-const { date_toISO, date_currentISO } = require('./core-funcs');
+const { arr_nextCircularIndex, date_toISO, date_currentISO } = require('./core-funcs');
 
 // ------------------------------- dir_itemList --------------------------------
 // return array containing list of items in a folder. Where each item is an
@@ -237,7 +237,7 @@ function fs_writeTextFile(filePath, textLines )
   return promise;
 }
 
-module.exports = { date_currentISO, date_toISO,
+module.exports = { arr_nextCircularIndex, date_currentISO, date_toISO,
         dir_itemList,
         fs_ensureDirExists, fs_exists, fs_readBase64, fs_readDir, 
         fs_readTextFile, fs_readTextFilx,

@@ -15,7 +15,7 @@
 * const { items, errmsg } = await dir_itemList( gitPath ) ;
 
 ## string methods
-* string_head( str, lx )
+* str_head( str, lx )
 * {part1, part2} = str_headSplit( str, lx )
 * str_substrLenient( str, bx, lx )
 
@@ -26,3 +26,6 @@
 * npm publish
 * npm update in projects which use this package
 
+## typescript types
+
+Typescript definition of exported functions are found in `common-fs.d.ts`. 
